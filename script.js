@@ -1,10 +1,21 @@
 // Массив с цитатами
 const quotes = [
-  "The best way to get started is to quit talking and begin doing.",
-  "Don't let yesterday take up too much of today.",
-  "You learn more from failure than from success.",
-  "It's not whether you get knocked down, it's whether you get up.",
-  "The harder you work for something, the greater you'll feel when you achieve it.",
+  {
+    quote: "The best way to get started is to quit talking and begin doing.",
+    author: "Steve Jobs",
+  },
+  {
+    quote: "Don't let yesterday take up too much of today.",
+    author: "Steve Jobs",
+  },
+  {
+    quote: "You learn more from failure than from success.",
+    author: "Steve Jobs",
+  },
+  {
+    quote: "It's not whether you get knocked down, it's whether you get up.",
+    author: "Steve Jobs",
+  },
 ];
 
 // Находим элементы
@@ -14,7 +25,10 @@ const quoteElement = document.getElementById("quote"); // место для ци
 function generateRandomQuote() {
   const randomIndex = Math.floor(Math.random() * quotes.length);
   const randomQuote = quotes[randomIndex]; // выводим цитату в <p>
-  quoteElement.textContent = randomQuote;
+
+  quoteElement.textContent = randomQuote.quote + " -" + randomQuote.author;
 }
 
 generateBtn.addEventListener("click", generateRandomQuote);
+
+const themeBtn = document.getElementById("themeBtn");
