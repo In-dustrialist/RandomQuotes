@@ -6,7 +6,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: #121212df; /* тёмный фон */
   color: white; /* текст сделаем белым, чтобы был виден */
   font-family: Arial, sans-serif;
@@ -27,6 +26,7 @@ h1 {
 
 #quote {
   font-size: 1.2rem;
+  font-style: italic;
   margin-bottom: 20px;
   color: #555;
 }

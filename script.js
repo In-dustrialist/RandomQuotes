@@ -25,7 +25,6 @@ const quoteElement = document.getElementById("quote"); // место для ци
 function generateRandomQuote() {
   const randomIndex = Math.floor(Math.random() * quotes.length);
   const randomQuote = quotes[randomIndex]; // выводим цитату в <p>
-
   quoteElement.textContent = randomQuote.quote + " -" + randomQuote.author;
 }
 
