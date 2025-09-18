@@ -1,48 +1,72 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #121212df; /* тёмный фон */
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: #121212df; /* тёмный фон */
-  color: white; /* текст сделаем белым, чтобы был виден */
-  font-family: Arial, sans-serif;
+  align-items: flex-start;
+  color: white;
 }
 
 .container {
   text-align: center;
-  background-color: #ffffffd6;
+  background-color: #1e1e1e; /* тёмный контейнер */
   padding: 30px 50px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  margin-top: 30px;
+  width: 400px;
 }
 
-h1 {
+h1,
+h2 {
   margin-bottom: 20px;
-  color: #333;
+  color: #ffffff;
 }
 
 .quote {
   font-size: 1.2rem;
   font-style: italic;
   margin-bottom: 20px;
-  color: #555;
+  color: #e0e0e0;
 }
 
 button {
   padding: 10px 20px;
   font-size: 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #007bff;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border-radius: 10px;
+  margin: 5px;
 }
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* Новые стили для блока избранного */
+.favorites-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.favorite-card {
+  background-color: #ffffff; /* белая карточка */
+  color: #000000; /* черный текст */
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  font-style: normal;
+  transition: transform 0.2s;
+}
+
+.favorite-card:hover {
+  transform: scale(1.02);
 }
