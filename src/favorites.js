@@ -1,27 +1,29 @@
 import quotes from "./quotes.js";
 
-const generateBtn = document.getElementById("generateBtn");
-const quoteElement = document.getElementById("quote");
-const favoriteBtn = document.getElementById("favorite-btn");
-const favoritesContainer = document.getElementById("favorites-container");
-
 let currentQuoteIndex;
+let quoteElement, favoriteBtn, favoritesContainer;
 
-function generateRandomQuote() {
+export function initApp(elements) {
+  quoteElement = elements.quoteElement;
+  favoriteBtn = elements.favoriteBtn;
+  favoritesContainer = elements.favoritesContainer;
+}
+
+export function generateRandomQuote() {
   currentQuoteIndex = Math.floor(Math.random() * quotes.length);
   const randomQuote = quotes[currentQuoteIndex];
   quoteElement.textContent = `${randomQuote.quote} - ${randomQuote.author}`;
   updateFavoriteButton();
 }
 
-function toggleFavorite() {
+export function toggleFavorite() {
   if (currentQuoteIndex === undefined) return;
 
   const quote = quotes[currentQuoteIndex];
   quote.isFavorite = !quote.isFavorite;
 
   if (quote.isFavorite) {
-    addFavoriteCard(quote);
+    addFavoriteCard(quote, currentQuoteIndex);
   } else {
     removeFavoriteCard(currentQuoteIndex);
   }
@@ -37,13 +39,12 @@ function updateFavoriteButton() {
     : "⭐ Add to Favorite";
 }
 
-function addFavoriteCard(quote) {
-  // проверяем, нет ли уже такой карточки
-  if (document.getElementById(`favorite-${currentQuoteIndex}`)) return;
+function addFavoriteCard(quote, index) {
+  if (document.getElementById(`favorite-${index}`)) return;
 
   const card = document.createElement("div");
   card.className = "favorite-card";
-  card.id = `favorite-${currentQuoteIndex}`;
+  card.id = `favorite-${index}`;
   card.textContent = `${quote.quote} - ${quote.author}`;
 
   favoritesContainer.appendChild(card);
@@ -53,6 +54,3 @@ function removeFavoriteCard(index) {
   const card = document.getElementById(`favorite-${index}`);
   if (card) card.remove();
 }
-
-generateBtn.addEventListener("click", generateRandomQuote);
-favoriteBtn.addEventListener("click", toggleFavorite);
