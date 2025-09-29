@@ -1,4 +1,4 @@
-const quotes = [
+let quotes = [
   {
     quote: "The best way to get started is to quit talking and begin doing.",
     author: "Steve Jobs",
@@ -54,5 +54,8 @@ const quotes = [
     isFavorite: false,
   },
 ];
+
+// Добавляем уникальные ID для каждой цитаты
+quotes = quotes.map((q) => ({ ...q, id: crypto.randomUUID() }));
 
 export default quotes;

@@ -7,6 +7,9 @@ export function initApp(elements) {
   quoteElement = elements.quoteElement;
   favoriteBtn = elements.favoriteBtn;
   favoritesContainer = elements.favoritesContainer;
+
+  // Привязываем обработчик нажатия на кнопку
+  favoriteBtn.addEventListener("click", toggleFavorite);
 }
 
 export function generateRandomQuote() {
@@ -23,9 +26,9 @@ export function toggleFavorite() {
   quote.isFavorite = !quote.isFavorite;
 
   if (quote.isFavorite) {
-    addFavoriteCard(quote, currentQuoteIndex);
+    addFavoriteCard(quote);
   } else {
-    removeFavoriteCard(currentQuoteIndex);
+    removeFavoriteCard(quote);
   }
 
   updateFavoriteButton();
@@ -39,18 +42,18 @@ function updateFavoriteButton() {
     : "⭐ Add to Favorite";
 }
 
-function addFavoriteCard(quote, index) {
-  if (document.getElementById(`favorite-${index}`)) return;
+function addFavoriteCard(quote) {
+  if (document.getElementById(`favorite-${quote.id}`)) return;
 
   const card = document.createElement("div");
   card.className = "favorite-card";
-  card.id = `favorite-${index}`;
+  card.id = `favorite-${quote.id}`;
   card.textContent = `${quote.quote} - ${quote.author}`;
 
   favoritesContainer.appendChild(card);
 }
 
-function removeFavoriteCard(index) {
-  const card = document.getElementById(`favorite-${index}`);
+function removeFavoriteCard(quote) {
+  const card = document.getElementById(`favorite-${quote.id}`);
   if (card) card.remove();
 }
